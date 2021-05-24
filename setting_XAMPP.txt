@@ -1,0 +1,40 @@
+ScriptAlias /php5.6/ "C:/xampp/php5.6/"
+<Directory "C:/xampp/php5.6">
+    AllowOverride None
+    Options None
+    Require all denied
+    <Files "php-cgi.exe">
+          Require all granted
+    </Files>
+</Directory>
+
+Listen 8056
+<VirtualHost *:8056>
+    UnsetEnv PHPRC
+    <FilesMatch "\.php$">
+        php_flag engine off
+        SetHandler application/x-httpd-php5.6
+        Action application/x-httpd-php5.6 "/php5.6/php-cgi.exe"
+    </FilesMatch>
+</VirtualHost>
+
+
+ScriptAlias /php7.4/ "C:/xampp/php7.4/"
+<Directory "C:/xampp/php7.4">
+    AllowOverride None
+    Options None
+    Require all denied
+    <Files "php-cgi.exe">
+          Require all granted
+    </Files>
+</Directory>
+
+Listen 8074
+<VirtualHost *:8074>
+    UnsetEnv PHPRC
+    <FilesMatch "\.php$">
+        php_flag engine off
+        SetHandler application/x-httpd-php7.4
+        Action application/x-httpd-php7.4 "/php7.4/php-cgi.exe"
+    </FilesMatch>
+</VirtualHost>
